@@ -8,6 +8,7 @@ import com.esenla.vidframe.navdrawer.NavDrawerDemo
 @Composable
 fun AppRoot( modifier: Modifier = Modifier) {
 
+    // NavDrawer Demo Comment
     NavDrawerDemo()
 
 }
