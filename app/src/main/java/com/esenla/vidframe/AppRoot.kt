@@ -11,7 +11,8 @@ fun AppRoot( modifier: Modifier = Modifier) {
     // NavDrawer Demo Comment
     NavDrawerDemo()
 
-    ListSelectedDir()
+//    ListSelectedDir()
 
+    ListVideoMediaStore()
 }
 
