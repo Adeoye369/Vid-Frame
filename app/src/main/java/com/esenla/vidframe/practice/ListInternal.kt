@@ -1,4 +1,4 @@
-package com.esenla.vidframe
+package com.esenla.vidframe.practice
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement

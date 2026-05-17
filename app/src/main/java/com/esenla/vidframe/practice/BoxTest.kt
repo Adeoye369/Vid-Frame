@@ -1,4 +1,4 @@
-package com.esenla.vidframe
+package com.esenla.vidframe.practice
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -24,6 +24,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.esenla.vidframe.R
 
 @Composable
 fun BoxTest(){
