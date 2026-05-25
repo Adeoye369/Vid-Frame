@@ -19,6 +19,9 @@ media3UiComposeMaterial3 = "1.10.0"
 navigation3Ui = "1.0.1"
 documentfile = "1.1.0"
 media3Exoplayer = "1.10.0"
+material3 = "1.4.0"
+materialIcons = "1.7.8"
+uiUnit = "1.11.2" # Default material Icons
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -48,10 +51,15 @@ hilt-nav-compose = {group="androidx.hilt", name="hilt-navigation-compose", versi
 androidx-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "roomVersion" }
 androidx-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "roomVersion" }
 androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "roomVersion" }
+androidx-material3 = { group = "androidx.compose.material3", name = "material3", version.ref = "material3" }
+
+androidx-material-icons = { group = "androidx.compose.material", name="material-icons-core", version.ref = "materialIcons" }
+androidx-compose-ui-unit = { group = "androidx.compose.ui", name = "ui-unit", version.ref = "uiUnit" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+
 kotlin-android = {id="org.jetbrains.kotlin.android", version.ref="kotlin"}
 hilt-android = {id="com.google.dagger.hilt.android", version.ref="hiltVersion"}
 ksp = {id="com.google.devtools.ksp", version.ref="kspVersion"}

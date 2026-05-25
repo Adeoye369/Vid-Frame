@@ -2,8 +2,8 @@ package com.esenla.vidframe.videoplayer.module
 
 import android.content.Context
 import androidx.room.Room
-import com.esenla.vidframe.videoplayer.data.VideoDao
-import com.esenla.vidframe.videoplayer.data.VideoDatabase
+import com.esenla.vidframe.videoplayer.data.VideoDataDao
+import com.esenla.vidframe.videoplayer.data.VidFrameDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,16 +15,18 @@ import dagger.hilt.components.SingletonComponent
 object VideoPlayerAppModule {
 
     @Provides
-    fun provideVideoDatabase(@ApplicationContext app: Context) : VideoDatabase{
+    fun provideVideoDatabase(@ApplicationContext app: Context) : VidFrameDatabase{
         return Room.databaseBuilder(
             app,
-            VideoDatabase::class.java,
+            VidFrameDatabase::class.java,
             "videos_db"
-        ).build()
+        )
+//            .fallbackToDestructiveMigration(true) // 👈 Destructive fallback added
+            .build()
     }
 
     @Provides
-    fun provideVideoDao(videoDatabase : VideoDatabase) : VideoDao{
-        return  videoDatabase.videoDao()
+    fun provideVideoDao(db : VidFrameDatabase) : VideoDataDao{
+        return  db.videoDao()
     }
 }

@@ -7,10 +7,12 @@ import androidx.room.PrimaryKey
 import androidx.room.TypeConverter
 
 @Entity(tableName = "videos")
-data class VideoEntity(
+data class VideoDataEntity(
     @PrimaryKey(autoGenerate = true)
-    val id : Int = 0,
-    val uri : Uri
+    val id: Int = 0,
+    val uri: Uri? ,
+    val name: String? ,
+    val duration: Int?
 )
 
 class UriConverters {

@@ -8,17 +8,17 @@ import androidx.room.Upsert
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface VideoDao {
+interface VideoDataDao {
 
     @Query("SELECT * FROM videos")
-    fun getAllVideos(): Flow<List<VideoEntity>>
+    fun getAllVideos(): Flow<List<VideoDataEntity>>
 
     @Upsert
-    suspend fun insert(vid: VideoEntity)
+    suspend fun insert(vid: VideoDataEntity)
 
     @Update
-    suspend fun update(vid: VideoEntity)
+    suspend fun update(vid: VideoDataEntity)
 
-    @Delete
-    suspend fun delete(vid: VideoEntity)
+    @Query("DELETE FROM videos WHERE id = :videoId")
+    suspend fun deleteById(videoId: Int)
 }
