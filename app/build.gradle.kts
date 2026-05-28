@@ -5,6 +5,9 @@ plugins {
     alias (libs.plugins.ksp)
     alias (libs.plugins.hilt.android)
     id("androidx.room")
+
+    // Optional, provides the @Serialize annotation for autogeneration of Serializers.
+//    alias(libs.plugins.jetbrains.kotlin.serialization)
 }
 
 android {
@@ -76,6 +79,12 @@ dependencies {
     implementation(libs.androidx.room.ktx)
 
     implementation(libs.androidx.material.icons)
+
+    implementation(libs.androidx.navigation3.ui)
+    implementation(libs.androidx.navigation3.runtime)
+    implementation(libs.androidx.lifecycle.viewmodel.navigation3)
+    implementation(libs.androidx.material3.adaptive.navigation3)
+    implementation(libs.kotlinx.serialization.core)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
