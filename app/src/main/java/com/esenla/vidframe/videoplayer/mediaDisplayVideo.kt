@@ -24,6 +24,7 @@ import androidx.media3.common.MediaItem
 import androidx.media3.common.Player
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.ui.compose.ContentFrame
+import com.esenla.vidframe.videoplayer.ui.PlayerUi
 import kotlinx.coroutines.delay
 
 @Composable
@@ -101,75 +102,77 @@ fun MediaDisplayVideo(context: Context, uri: Uri?){
     }
 
     // Column to hold video
-//    Box(
-//        modifier = Modifier.fillMaxSize(),
-//        contentAlignment = Alignment.Center
-//    ) {
-////        // Picker Button
-////        Button(
-////            onClick = {
-////                videoLauncher.launch(
-////                    input = PickVisualMediaRequest(mediaType = ActivityResultContracts.PickVisualMedia.VideoOnly)
-////                )
-////            }
-////        ) {
-////            Text("PickVideo")
-////        }
-//
-//        // Content Frame container
-//        Box(
-//            modifier= Modifier.align (Alignment.Center)
-//
-//        ){
-//            ContentFrame(
-//                player=player,
-//                modifier= Modifier.fillMaxWidth()
-//                    .clickable(
-//                        interactionSource = null,
-//                        indication = null,
-//                    ){
-//                        isPlayerUiVisible = !isPlayerUiVisible
-//                    }
-//            )
-//
-//            Column(
-//                modifier= Modifier.fillMaxSize()
-//            ) {
-//                AnimatedVisibility(
-//                    visible = isPlayerUiVisible,
-//                    enter = fadeIn(),
-//                    exit = fadeOut()
-//                ) {
-//                    PlayerUi(
-//                        isPlaying = isPlaying,
-//                        duration = duration,
-//                        currentPosition = currentPosition,
-//                        isBuffering = isBuffering,
-//                        onSeekBarPositionChange = { newPos->
-//                            isSeeking = true
-//                            currentPosition=newPos
-//                        },
-//                        onSeekBarPositionChangeFinished = { curentPos ->
-//                            player.seekTo(curentPos)
-//                            isSeeking=false
-//                        },
-//                        onPlayPauseClick = {
-//                            when{
-//                                !isPlaying && player.playbackState == Player.STATE_ENDED->{
-//                                    player.seekTo(0)
-//                                    player.play()
-//                                }
-//                                !isPlaying -> player.play()
-//                                isPlaying -> player.pause()
-//                            }
-//                        }
-//                    )
-//                }
+    Box(
+        modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center
+    ) {
+//        // Picker Button
+//        Button(
+//            onClick = {
+//                videoLauncher.launch(
+//                    input = PickVisualMediaRequest(mediaType = ActivityResultContracts.PickVisualMedia.VideoOnly)
+//                )
 //            }
-//
-//        }// end Box
-//
-//
-//    }
+//        ) {
+//            Text("PickVideo")
+//        }
+
+        // Content Frame container
+        Box(
+            modifier= Modifier.align (Alignment.Center)
+
+        ){
+            ContentFrame(
+                player=player,
+                modifier= Modifier.fillMaxWidth()
+                    .clickable(
+                        interactionSource = null,
+                        indication = null,
+                    ){
+                        isPlayerUiVisible = !isPlayerUiVisible
+                    }
+            )
+
+            Column(
+                modifier= Modifier.fillMaxSize()
+            ) {
+                AnimatedVisibility(
+                    visible = isPlayerUiVisible,
+                    enter = fadeIn(),
+                    exit = fadeOut()
+                ) {
+                    PlayerUi(
+                        isPlaying = isPlaying,
+                        duration = duration,
+                        currentPosition = currentPosition,
+                        isBuffering = isBuffering,
+                        onSeekBarPositionChange = { newPos ->
+                            isSeeking = true
+                            currentPosition = newPos
+                        },
+                        onSeekBarPositionChangeFinished = { curentPos ->
+                            player.seekTo(curentPos)
+                            isSeeking = false
+                        },
+                        onPlayPauseClick = {
+                            when {
+                                !isPlaying && player.playbackState == Player.STATE_ENDED -> {
+                                    player.seekTo(0)
+                                    player.play()
+                                }
+
+                                !isPlaying -> player.play()
+                                isPlaying -> player.pause()
+                            }
+                        }
+                    )
+                }
+            }
+
+        }// end Box
+
+
+    }
 
 }
+
