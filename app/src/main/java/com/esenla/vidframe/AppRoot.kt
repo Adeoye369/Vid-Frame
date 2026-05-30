@@ -17,7 +17,7 @@ sealed interface VPRoute : NavKey{
     @Serializable
     data object VideoHome: VPRoute
     @Serializable
-    data class VideoListPlay(val uri: String): VPRoute
+    data class VideoPlay(val uri: String): VPRoute
 }
 
 @Composable
@@ -38,13 +38,14 @@ fun AppRoot( modifier: Modifier = Modifier) {
             entry<VPRoute.VideoHome>{
                 VideoListScreen(
                     onVideoClick = {uriString ->
-                        backStack.add(VPRoute.VideoListPlay(uri = uriString))
+                        backStack.add(VPRoute.VideoPlay(uri = uriString))
                     }
                 )
             }
 
-            entry<VPRoute.VideoListPlay> { key ->
-                VideoPlayScreen(key.uri)
+            entry<VPRoute.VideoPlay> { key ->
+                VideoPlayScreen(key.uri ,
+                    onBackClick = {backStack.removeLastOrNull()})
             }
         }
 

@@ -1,4 +1,4 @@
-package com.esenla.vidframe.videoplayer
+package com.esenla.vidframe.videoplayer.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
