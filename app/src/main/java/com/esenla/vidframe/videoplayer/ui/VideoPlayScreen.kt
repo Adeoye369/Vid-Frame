@@ -33,12 +33,13 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.media3.common.Player
 import androidx.media3.ui.compose.ContentFrame
 import com.esenla.vidframe.videoplayer.presentation.VideoListViewModel
+import com.esenla.vidframe.videoplayer.presentation.VideoPlayerViewModel
 import kotlinx.coroutines.delay
 
 @Composable
 fun VideoPlayScreen(
     videoUri: String ="",
-    viewModel: VideoListViewModel= hiltViewModel(),
+    viewModel: VideoPlayerViewModel,
     onBackClick: () -> Unit // 1. Added navigation callback parameter
 ) {
 

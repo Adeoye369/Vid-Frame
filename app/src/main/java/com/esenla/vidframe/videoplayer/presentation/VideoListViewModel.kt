@@ -16,8 +16,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class VideoListViewModel @Inject constructor(
-    private val videoRepo: VideoDataRepo,
-    val player : ExoPlayer
+    private val videoRepo: VideoDataRepo
 ): ViewModel() {
 
     // read all videos
@@ -37,27 +36,6 @@ class VideoListViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
             videoRepo.deleteVideo(video)
         }
-    }
-
-    fun playVideo(uri: String) {
-
-        val mediaItem = MediaItem.fromUri(uri)
-
-        // 1. Clears the previous video timeline, position history, and tracks
-        player.stop()
-        player.clearMediaItems()
-
-        // 2. Load the new video and force it to start at index 0, position 0
-        player.setMediaItem(mediaItem)
-        player.seekTo(0, 0L)
-
-        // 3. Prepare and stream
-        player.prepare()
-        player.play()
-    }
-
-    override fun onCleared( ) {
-        player.release() // Properly releases the @ViewModelScoped player instance
     }
 
 
